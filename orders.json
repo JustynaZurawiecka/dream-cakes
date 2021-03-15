@@ -1,0 +1,18 @@
+[
+    {
+        "title": "Tort czekoladowy",
+        "price": "55zl",
+        "count": 1,
+        "inscription": "Add text - 3 years Anna",
+        "client": "Amanda Doe",
+        "email": "amandadoe@example.com"
+    },
+    {
+        "title": "Tort śmietankowy",
+        "price": "65zl",
+        "count": 3,
+        "inscription": "Add text - 6 years Heniu i 5 years of Grzesiu",
+        "client": "Curtis Johnson",
+        "email": "curtisj@example.com"
+    }
+]

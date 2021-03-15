@@ -1,0 +1,50 @@
+[
+    {
+        "title": "Tort czekoladowy",
+        "image": "/img/products/czekoladowy.jpeg",
+        "minPrice": "od 50zł za 1kg",
+        "price": "65",
+        "count": 1,
+        "description": "Przepyszny tort czekoladowy z gorzką czekoladą o lekkim orzechowo - rumowym smaku. Wspaniały na pochmurne dni, na poprawę samopoczucia czy na wyjątkowe okazje"
+    },
+    {
+        "title": "Tort śmietankowy",
+        "image": "/img/products/smietankowy.jpeg",
+        "minPrice": "od 45zł za 1kg",
+        "price": "45",
+        "count": 1,
+        "description": "Tort śmietankowy to pyszna propozycja na tort na wszelkie okazje. Idealny na przeróżne rodzinne przyjęcia"
+    },
+    {
+        "title": "Tort Marzenie",
+        "image": "/img/products/marzenie.jpeg",
+        "minPrice": "od 60zł za 1kg",
+        "price": "60",
+        "count": 1,
+        "description": "Delikatny biszkot z masą waniliową z owocami. Ulubieniec zarówno  dzieci jak i dorosłych"
+    },
+    {
+        "title": "Tort Fit",
+        "image": "/img/products/fit.jpeg",
+        "minPrice": "od 65zł za 1kg",
+        "price": "65",
+        "count": 1,
+        "description": "Lekki, zdrowy i pyszny tort z migdałami, borówkami i orzechami brazylijskimi."
+    },
+    {
+        "title": "Tort Fantazja",
+        "image": "/img/products/fantazja.jpeg",
+        "minPrice": "od 75zł za 1kg",
+        "price": "75",
+        "count": 1,
+        "description": "Wykwinty i niezwykle elegancki tort śmietankowy z serkiem marscarpone. Dokonały smaku i piękny w wyglądzie"
+    },
+    {
+        "title": "Tort Raj",
+        "image": "/img/products/raj.jpeg",
+        "minPrice": "od 55zł za 1kg",
+        "price": "55",
+        "count": 1,
+        "description": "Tort z masą toffi i serkiem mascarpone. Niezwykle subtelny i delikatny w smaku"
+    }
+]
