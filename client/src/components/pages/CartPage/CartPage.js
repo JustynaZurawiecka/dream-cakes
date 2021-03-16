@@ -13,8 +13,11 @@ const Cart = ({ singleProduct, history }) => {
         }
     }, [])
     if (singleProduct) {
-        return (
+        // localStorage.setItem('singleProduct', JSON.stringify(singleProduct));
+        // var retrievedObject = localStorage.getItem('singleProduct');
 
+        // console.log('retrievedObject: ', JSON.parse(retrievedObject));
+        return (
             <Container>
                 <h1>Koszyk</h1>
                 <CartProduct chosenProduct={singleProduct} removeProduct={removeProduct} />
@@ -22,7 +25,6 @@ const Cart = ({ singleProduct, history }) => {
                     <NavLink href="/order-a-product">
                         <Button className="cart__info__order-button" outline color="primary">Dalej</Button>
                     </NavLink>
-
                 </div>
             </Container>
         )

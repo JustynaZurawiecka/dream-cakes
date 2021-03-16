@@ -8,8 +8,6 @@ export const getRequest = ({ products }) => products.request;
 
 export const getProduct = ({ products }) => products.singleProduct;
 
-// export const getCart = ({ products }) => products.cart;
-
 /* ACTIONS */
 
 // action name creator
@@ -23,9 +21,6 @@ const ERROR_REQUEST = createActionName('ERROR_REQUEST');
 const LOAD_PRODUCTS = createActionName('LOAD_PRODUCTS');
 const LOAD_PRODUCT = createActionName('LOAD_PRODUCT');
 
-const INCREMENT = createActionName('INCREMENT');
-const DECREMENT = createActionName('DECREMENT');
-
 const REMOVE_PRODUCT = createActionName('REMOVE_PRODUCT');
 
 export const startRequest = () => ({ type: START_REQUEST });
@@ -34,9 +29,6 @@ export const errorRequest = error => ({ error, type: ERROR_REQUEST });
 
 export const loadProducts = payload => ({ payload, type: LOAD_PRODUCTS });
 export const loadProduct = payload => ({ payload, type: LOAD_PRODUCT });
-
-export const increaseCount = payload => ({ payload, type: INCREMENT });
-export const decreaseCount = payload => ({ payload, type: DECREMENT });
 
 export const removeProduct = payload => ({ payload, type: REMOVE_PRODUCT });
 
@@ -86,9 +78,7 @@ const initialState = {
     error: null,
     success: null,
   },
-  count: 1,
-  singleProduct: null,
-  cart: []
+  singleProduct: null
 
 };
 
@@ -98,13 +88,7 @@ console.log(initialState, 'initialState');
 export default function reducer(statePart = initialState, action = {}) {
   switch (action.type) {
     case REMOVE_PRODUCT:
-      // const updatedProductList = statePart.
-
-      return {};
-    case INCREMENT:
-      return { ...statePart, count: statePart.count + 1 };
-    case DECREMENT:
-      return { ...statePart, count: statePart.count - 1 };
+      return null;
     case LOAD_PRODUCT:
       return { ...statePart, singleProduct: action.payload };
     case LOAD_PRODUCTS:

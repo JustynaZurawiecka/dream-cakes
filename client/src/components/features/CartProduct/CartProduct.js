@@ -6,6 +6,19 @@ import './CartProduct.scss'
 
 const CartProduct = ({ chosenProduct, removeProduct }) => {
     const [count, setCount] = useState(localStorage.getItem("count"));
+    const sum = count > 0 ? chosenProduct.price * count : chosenProduct.price;
+
+    const selectedProduct = {
+        id: chosenProduct._id,
+        title: chosenProduct.title,
+        count: count,
+        sum: sum,
+        image: chosenProduct.image
+    }
+    console.log(selectedProduct, 'selectedProduct');
+
+    localStorage.setItem('selectedProduct', JSON.stringify(selectedProduct));
+
     return (
         <div className="single__product__info">
             <Table>
@@ -33,8 +46,8 @@ const CartProduct = ({ chosenProduct, removeProduct }) => {
                                 <option>5</option>
                             </select>
                         </td>
-                        <td className="cart__info__total-price">{count > 0 ? chosenProduct.price * count : chosenProduct.price} zł</td>
-                        <td><Button className="single__product__info_remove" onClick={(e) => removeProduct(e, chosenProduct)}>x</Button></td>
+                        <td className="cart__info__total-price">{sum} zł</td>
+                        <td><Button className="single__product__info_remove" onClick={localStorage.removeItem('chosenProduct')}>x</Button></td>
                     </tr>
                 </tbody>
             </Table>
