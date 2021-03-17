@@ -29,10 +29,26 @@ const CartProduct = ({ chosenProduct, removeProduct }) => {
         localStorage.setItem('title', chosenProduct.title);
         localStorage.setItem('count', count);
         localStorage.setItem('sum', sum);
-        localStorage.setItem('image', chosenProduct.image);
     }
 
     saveSelectedProduct();
+
+    const handleChange = e => {
+        setInscription(e.target.value);
+    }
+
+    const handleSubmit = e => {
+        if (inscription) {
+            localStorage.setItem('inscription', inscription);
+            alert("Napis pomyslnie zapisany");
+        }
+        setInscription('');
+        e.preventDefault();
+    }
+
+    // onChange={(e) => setInscription(e.target.value)}
+
+
 
     //UWAGA klikajac w przycisk Dalej powinno byc ruchomiona funcja ktora wstawia do localeStorage title, count, sum i inscription i uzywane jest to w komponencie orderform ktory jest renderowany przez orderPage
     //Dac jakis form zby moc wstawic tekst i przy zapisywaniu dajemy setInscription i dodajemy do storage
@@ -81,8 +97,19 @@ const CartProduct = ({ chosenProduct, removeProduct }) => {
                 </tbody>
             </Table>
             <p className="cart__info__product-count_max">*Maksymalna ilość zamawianych tortów to 5. Sprzedajemy torty klientom biznesowym jak i indywidualnym.</p>
-
-        </div>
+            <form onSubmit={handleSubmit}>
+                <label>
+                    Napis na torcie
+                    <input
+                        type="textarea" rows="2" cols="20" onChange={handleChange}
+                    // value="value"
+                    />
+                </label>
+                <div>
+                    <Button type="submit">Zapisz</Button>
+                </div>
+            </form>
+        </div >
 
 
 

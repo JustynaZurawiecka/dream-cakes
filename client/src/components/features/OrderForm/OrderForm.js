@@ -58,7 +58,10 @@ class OrderForm extends React.Component {
       <Form className="order-ticket-form" onSubmit={submitForm}>
         <Row>
           <Col xs="12" md="6">
-            <p>{localStorage.getItem("selectedProduct")}</p>
+            <p>Wybrany tort: {localStorage.getItem("title")}</p>
+            <p>Ilosc: {localStorage.getItem("count")}</p>
+            <p>Suma: {localStorage.getItem("sum")} PLN</p>
+            <p>Napis na torcie: {localStorage.getItem("inscription")}</p>
           </Col>
           <Col xs="12" md="6">
             {(isError) && <Alert color="warning">Nie udało się złożyć zamówienia. Upewnij się, że wszystkie pola zostały wypełnione. </Alert>}
