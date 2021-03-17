@@ -6,10 +6,10 @@ import './CartProduct.scss'
 
 const CartProduct = ({ chosenProduct, removeProduct }) => {
     const [count, setCount] = useState(localStorage.getItem("count"));
+    const [inscription, setInscription] = useState('');
     const sum = count > 0 ? chosenProduct.price * count : chosenProduct.price;
 
     const selectedProduct = {
-        id: chosenProduct._id,
         title: chosenProduct.title,
         count: count,
         sum: sum,
@@ -17,7 +17,36 @@ const CartProduct = ({ chosenProduct, removeProduct }) => {
     }
     console.log(selectedProduct, 'selectedProduct');
 
-    localStorage.setItem('selectedProduct', JSON.stringify(selectedProduct));
+    // const order = function orderProduct() {
+    //     localStorage.setItem('title', chosenProduct.title);
+    // }
+
+    // console.log(order, 'orderProduct');
+
+    // localStorage.setItem('title', chosenProduct.title);
+
+    function saveSelectedProduct() {
+        localStorage.setItem('title', chosenProduct.title);
+        localStorage.setItem('count', count);
+        localStorage.setItem('sum', sum);
+        localStorage.setItem('image', chosenProduct.image);
+    }
+
+    saveSelectedProduct();
+
+    //UWAGA klikajac w przycisk Dalej powinno byc ruchomiona funcja ktora wstawia do localeStorage title, count, sum i inscription i uzywane jest to w komponencie orderform ktory jest renderowany przez orderPage
+    //Dac jakis form zby moc wstawic tekst i przy zapisywaniu dajemy setInscription i dodajemy do storage
+
+    // localStorage.setItem('selectedProduct', JSON.stringify(selectedProduct));
+
+    // localStorage.setItem('selectedProduct1', JSON.stringify({
+    //     title: chosenProduct.title,
+    //     count: count,
+    //     sum: sum,
+    //     image: chosenProduct.image
+    // }));
+
+    // var selectedProduct1 = JSON.parse(localStorage.getItem('selectedProduct1'));
 
     return (
         <div className="single__product__info">
