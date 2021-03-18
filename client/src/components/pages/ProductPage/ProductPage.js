@@ -8,7 +8,6 @@ class ProductPage extends React.Component {
 
   state = {
     count: '',
-    // visibleButtons: false,
   }
 
   handleChange = event => {

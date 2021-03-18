@@ -1,14 +1,11 @@
 import React, { useEffect } from 'react';
-import { Container, NavLink, Button } from 'reactstrap';
+import { Container, Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import CartProduct from '../../features/CartProduct/CartProduct';
 
 import './CartPage.scss';
 
-const Cart = ({ singleProduct, history, saveSelectedProduct }) => {
-
-    // function triggerChildFunction() {
-    //     this.refs.child.saveSelectedProduct()
-    // }
+const Cart = ({ singleProduct, history, updateCart, clearCart }) => {
 
     //useEffect has preventDefault 
     useEffect(function () {
@@ -23,11 +20,11 @@ const Cart = ({ singleProduct, history, saveSelectedProduct }) => {
         return (
             <Container>
                 <h1>Koszyk</h1>
-                <CartProduct chosenProduct={singleProduct} />
+                <CartProduct chosenProduct={singleProduct} updateCart={updateCart} clearCart={clearCart} />
                 <div className="cart__info">
-                    <NavLink href="/order-a-product">
+                    <Link to="/order-a-product">
                         <Button className="cart__info__order-button" outline color="primary">Dalej</Button>
-                    </NavLink>
+                    </Link>
                 </div>
             </Container>
         )

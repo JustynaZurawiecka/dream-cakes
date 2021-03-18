@@ -8,8 +8,8 @@ class OrderForm extends React.Component {
   state = {
     order: {
       title: '',
-      price: '',
-      count: null,
+      sum: 1,
+      count: 1,
       inscription: '',
       client: '',
       email: '',
@@ -28,15 +28,17 @@ class OrderForm extends React.Component {
     const { order } = this.state;
     const { addOrder } = this.props;
 
+    console.log(order, 'order');
+
     e.preventDefault();
 
-    if (order.client && order.email && order.inscription && order.count && order.price && order.title) {
+    if (order.client && order.email && order.inscription && order.count && order.sum && order.title) {
       addOrder(order);
       this.setState({
         order: {
           title: '',
           price: '',
-          count: null,
+          count: 0,
           inscription: '',
           client: '',
           email: '',
@@ -51,17 +53,17 @@ class OrderForm extends React.Component {
   render() {
 
     const { updateTextField, submitForm } = this;
-    const { requests } = this.props;
+    const { requests, cart } = this.props;
     const { order, isError } = this.state;
 
     return (
       <Form className="order-ticket-form" onSubmit={submitForm}>
         <Row>
           <Col xs="12" md="6">
-            <p>Wybrany tort: {localStorage.getItem("title")}</p>
-            <p>Ilosc: {localStorage.getItem("count")}</p>
-            <p>Suma: {localStorage.getItem("sum")} PLN</p>
-            <p>Napis na torcie: {localStorage.getItem("inscription")}</p>
+            <p>Wybrany tort: {cart ? cart.title : ''}</p>
+            <p>Ilosc: {cart ? cart.count : 1}</p>
+            <p>Suma: {cart ? cart.sum : 1} PLN</p>
+            <p>Napis na torcie: {cart ? cart.inscription : ''}</p>
           </Col>
           <Col xs="12" md="6">
             {(isError) && <Alert color="warning">Nie udało się złożyć zamówienia. Upewnij się, że wszystkie pola zostały wypełnione. </Alert>}

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getProduct, removeProduct } from '../../../redux/productsRedux';
+import { getProduct, clearCart, updateCart } from '../../../redux/productsRedux';
 import Cart from './CartPage';
 
 const mapStateToProps = state => ({
@@ -7,7 +7,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    removeProduct: (product) => dispatch(removeProduct(product)),
+    clearCart: (cart) => dispatch(clearCart(cart)),
+    updateCart: (cart) => dispatch(updateCart(cart)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

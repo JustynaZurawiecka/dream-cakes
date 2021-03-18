@@ -22,8 +22,8 @@ exports.getOne = async (req, res) => {
 
 exports.insertOne = async (req, res) => {
     try {
-        const { title, price, count, inscription, client, email } = req.body;
-        const newOrder = new Order({ title: title, price: price, count: count, inscription: inscription, client: client, email: email });
+        const { title, sum, count, inscription, client, email } = req.body;
+        const newOrder = new Order({ title: title, sum: sum, count: count, inscription: inscription, client: client, email: email });
         await newOrder.save();
         res.json({ message: 'OK' });
     }
@@ -34,9 +34,9 @@ exports.insertOne = async (req, res) => {
 
 exports.updateOne = async (req, res) => {
     try {
-        const { title, price, count, inscription, client, email } = req.body;
+        const { title, sum, count, inscription, client, email } = req.body;
         if (order) {
-            await Order.updateOne({ _id: req.params.id }, { $set: { title: title, price: price, count: count, inscription: inscription, client: client, email: email } });
+            await Order.updateOne({ _id: req.params.id }, { $set: { title: title, sum: sum, count: count, inscription: inscription, client: client, email: email } });
             res.json({ message: 'OK' });
             res.json(order);
         }

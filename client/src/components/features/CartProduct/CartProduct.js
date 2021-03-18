@@ -1,68 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Button, Table } from 'reactstrap';
 
 import './CartProduct.scss'
 
-const CartProduct = ({ chosenProduct, removeProduct }) => {
+const CartProduct = ({ chosenProduct, updateCart, clearCart }) => {
     const [count, setCount] = useState(localStorage.getItem("count"));
     const [inscription, setInscription] = useState('');
     const sum = count > 0 ? chosenProduct.price * count : chosenProduct.price;
+    // const title = chosenProduct.title;
 
-    const selectedProduct = {
-        title: chosenProduct.title,
-        count: count,
-        sum: sum,
-        image: chosenProduct.image
-    }
-    console.log(selectedProduct, 'selectedProduct');
+    useEffect(function () {
+        updateCart({
+            title: chosenProduct.title,
+            inscription: inscription,
+            count: count,
+            sum: sum
+        })
+    }, [count, inscription]);
+    //if count changes the updateCart func runs once again
 
-    // const order = function orderProduct() {
+    // const selectedProduct = {
+    //     title: chosenProduct.title,
+    //     count: count,
+    //     sum: sum,
+    //     image: chosenProduct.image
+    // }
+    // console.log(selectedProduct, 'selectedProduct');
+
+    // function saveSelectedProduct() {
     //     localStorage.setItem('title', chosenProduct.title);
+    //     localStorage.setItem('count', count);
+    //     localStorage.setItem('sum', sum);
     // }
 
-    // console.log(order, 'orderProduct');
-
-    // localStorage.setItem('title', chosenProduct.title);
-
-    function saveSelectedProduct() {
-        localStorage.setItem('title', chosenProduct.title);
-        localStorage.setItem('count', count);
-        localStorage.setItem('sum', sum);
-    }
-
-    saveSelectedProduct();
+    // saveSelectedProduct();
 
     const handleChange = e => {
         setInscription(e.target.value);
     }
 
     const handleSubmit = e => {
-        if (inscription) {
-            localStorage.setItem('inscription', inscription);
-            alert("Napis pomyslnie zapisany");
-        }
-        setInscription('');
+        // alert("Napis pomyslnie zapisany");
         e.preventDefault();
     }
-
-    // onChange={(e) => setInscription(e.target.value)}
-
-
-
-    //UWAGA klikajac w przycisk Dalej powinno byc ruchomiona funcja ktora wstawia do localeStorage title, count, sum i inscription i uzywane jest to w komponencie orderform ktory jest renderowany przez orderPage
-    //Dac jakis form zby moc wstawic tekst i przy zapisywaniu dajemy setInscription i dodajemy do storage
-
-    // localStorage.setItem('selectedProduct', JSON.stringify(selectedProduct));
-
-    // localStorage.setItem('selectedProduct1', JSON.stringify({
-    //     title: chosenProduct.title,
-    //     count: count,
-    //     sum: sum,
-    //     image: chosenProduct.image
-    // }));
-
-    // var selectedProduct1 = JSON.parse(localStorage.getItem('selectedProduct1'));
 
     return (
         <div className="single__product__info">
@@ -92,7 +74,7 @@ const CartProduct = ({ chosenProduct, removeProduct }) => {
                             </select>
                         </td>
                         <td className="cart__info__total-price">{sum} zł</td>
-                        <td><Button className="single__product__info_remove" onClick={localStorage.removeItem('chosenProduct')}>x</Button></td>
+                        <td><Link to="/" className="single__product__info_remove" onClick={clearCart}>USUŃ PRODUKT</Link></td>
                     </tr>
                 </tbody>
             </Table>

@@ -8,6 +8,8 @@ export const getRequest = ({ products }) => products.request;
 
 export const getProduct = ({ products }) => products.singleProduct;
 
+export const getCart = ({ products }) => products.cart;
+
 /* ACTIONS */
 
 // action name creator
@@ -21,7 +23,8 @@ const ERROR_REQUEST = createActionName('ERROR_REQUEST');
 const LOAD_PRODUCTS = createActionName('LOAD_PRODUCTS');
 const LOAD_PRODUCT = createActionName('LOAD_PRODUCT');
 
-const REMOVE_PRODUCT = createActionName('REMOVE_PRODUCT');
+const CLEAR_CART = createActionName('CLEAR_CART');
+const UPDATE_CART = createActionName('UPDATE_CART');
 
 export const startRequest = () => ({ type: START_REQUEST });
 export const endRequest = () => ({ type: END_REQUEST });
@@ -30,7 +33,8 @@ export const errorRequest = error => ({ error, type: ERROR_REQUEST });
 export const loadProducts = payload => ({ payload, type: LOAD_PRODUCTS });
 export const loadProduct = payload => ({ payload, type: LOAD_PRODUCT });
 
-export const removeProduct = payload => ({ payload, type: REMOVE_PRODUCT });
+export const clearCart = payload => ({ payload, type: CLEAR_CART });
+export const updateCart = payload => ({ payload, type: UPDATE_CART });
 
 /* THUNKS */
 
@@ -78,8 +82,8 @@ const initialState = {
     error: null,
     success: null,
   },
-  singleProduct: null
-
+  singleProduct: null,
+  cart: null
 };
 
 console.log(initialState, 'initialState');
@@ -87,8 +91,10 @@ console.log(initialState, 'initialState');
 
 export default function reducer(statePart = initialState, action = {}) {
   switch (action.type) {
-    case REMOVE_PRODUCT:
-      return null;
+    case UPDATE_CART:
+      return { ...statePart, cart: action.payload };
+    case CLEAR_CART:
+      return { ...statePart, singleProduct: null };
     case LOAD_PRODUCT:
       return { ...statePart, singleProduct: action.payload };
     case LOAD_PRODUCTS:
