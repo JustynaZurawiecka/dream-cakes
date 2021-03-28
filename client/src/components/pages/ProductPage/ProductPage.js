@@ -41,8 +41,19 @@ class ProductPage extends React.Component {
       <Container>
         <Row noGutters>
           <Col xs="6">
-            <div className="product__image-container">
-              <img className="product__image-container__img" src={product.image} alt={product.title} />
+            <div className="main__product__image">
+              <img src={product.image} alt={product.title} />
+            </div>
+            <div className="sub__product__image">
+              <div className="sub__product__image-first">
+                <img src={product.image} alt={product.title} />
+              </div>
+              <div className="sub__product__image-second">
+                <img src={product.image} alt={product.title} />
+              </div>
+              <div className="sub__product__image-third">
+                <img src={product.image} alt={product.title} />
+              </div>
             </div>
           </Col>
           <Col xs="6">
@@ -64,8 +75,8 @@ class ProductPage extends React.Component {
             </div>
           </Col>
         </Row>
-        <h2>Opis produktu</h2>
-        <p>{product.description}</p>
+        <h2 className="product__info__description-header">Opis produktu</h2>
+        <p className="product__info__description">{product.description}</p>
       </Container>
     )
   };

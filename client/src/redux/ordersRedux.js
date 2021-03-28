@@ -16,12 +16,14 @@ const END_REQUEST = createActionName('END_REQUEST');
 const ERROR_REQUEST = createActionName('ERROR_REQUEST');
 
 const ADD_ORDER = createActionName('ADD_ORDER');
+const UPDATE_ORDER = createActionName('UPDATE_ORDER');
 
 export const startRequest = payload => ({ payload, type: START_REQUEST });
 export const endRequest = payload => ({ payload, type: END_REQUEST });
 export const errorRequest = payload => ({ payload, type: ERROR_REQUEST });
 
 export const addOrder = payload => ({ payload, type: ADD_ORDER });
+export const updateOrder = payload => ({ payload, type: UPDATE_ORDER });
 
 /* THUNKS */
 
@@ -54,6 +56,8 @@ const initialState = {
 export default function reducer(statePart = initialState, action = {}) {
   switch (action.type) {
     case ADD_ORDER:
+      return { ...statePart, data: [...statePart.data, action.payload] }
+    case UPDATE_ORDER:
       return { ...statePart, data: [...statePart.data, action.payload] }
     case START_REQUEST:
       return { ...statePart, requests: { ...statePart.requests, [action.payload.name]: { pending: true, error: null, success: false } } };

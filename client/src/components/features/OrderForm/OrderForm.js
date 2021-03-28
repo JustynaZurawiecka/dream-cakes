@@ -4,17 +4,19 @@ import { Button, Form, FormGroup, Label, Input, Row, Col, Alert, Progress } from
 import './OrderForm.scss';
 
 class OrderForm extends React.Component {
-
-  state = {
-    order: {
-      title: '',
-      sum: 1,
-      count: 1,
-      inscription: '',
-      client: '',
-      email: '',
-    },
-    isError: false,
+  constructor(props) {
+    super(props);
+    this.state = {
+      order: {
+        title: '',
+        sum: 2,
+        count: 1,
+        inscription: '',
+        client: '',
+        email: '',
+      },
+      isError: false,
+    }
   }
 
   updateTextField = ({ target }) => {
@@ -28,20 +30,18 @@ class OrderForm extends React.Component {
     const { order } = this.state;
     const { addOrder } = this.props;
 
-    console.log(order, 'order');
-
     e.preventDefault();
 
-    if (order.client && order.email && order.inscription && order.count && order.sum && order.title) {
+    if (order.client && order.email) {
       addOrder(order);
       this.setState({
         order: {
           title: '',
-          price: '',
           count: 0,
           inscription: '',
           client: '',
           email: '',
+          sum: 0,
         },
         isError: false,
       });
@@ -57,13 +57,14 @@ class OrderForm extends React.Component {
     const { order, isError } = this.state;
 
     return (
+
       <Form className="order-ticket-form" onSubmit={submitForm}>
         <Row>
           <Col xs="12" md="6">
-            <p>Wybrany tort: {cart ? cart.title : ''}</p>
-            <p>Ilosc: {cart ? cart.count : 1}</p>
-            <p>Suma: {cart ? cart.sum : 1} PLN</p>
-            <p>Napis na torcie: {cart ? cart.inscription : ''}</p>
+            <p>Wybrany tort:<span>{cart ? cart.title : ''}</span></p>
+            <p>Ilosc:<span>{cart ? cart.count : 1}</span></p>
+            <p>Suma: <span>{cart ? cart.sum : 1} PLN</span></p>
+            <p>Napis na torcie: <span>{cart ? cart.inscription : ''}</span></p>
           </Col>
           <Col xs="12" md="6">
             {(isError) && <Alert color="warning">Nie udało się złożyć zamówienia. Upewnij się, że wszystkie pola zostały wypełnione. </Alert>}
@@ -81,7 +82,7 @@ class OrderForm extends React.Component {
             <Button color="primary" className="mt-3">Finalizuj zamówienie</Button>
           </Col>
         </Row>
-      </Form>
+      </Form >
     )
   };
 }

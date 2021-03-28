@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Button, Table } from 'reactstrap';
+import { Table } from 'reactstrap';
 
 import './CartProduct.scss'
 
@@ -9,7 +9,6 @@ const CartProduct = ({ chosenProduct, updateCart, clearCart }) => {
     const [count, setCount] = useState(localStorage.getItem("count"));
     const [inscription, setInscription] = useState('');
     const sum = count > 0 ? chosenProduct.price * count : chosenProduct.price;
-    // const title = chosenProduct.title;
 
     useEffect(function () {
         updateCart({
@@ -19,23 +18,6 @@ const CartProduct = ({ chosenProduct, updateCart, clearCart }) => {
             sum: sum
         })
     }, [count, inscription]);
-    //if count changes the updateCart func runs once again
-
-    // const selectedProduct = {
-    //     title: chosenProduct.title,
-    //     count: count,
-    //     sum: sum,
-    //     image: chosenProduct.image
-    // }
-    // console.log(selectedProduct, 'selectedProduct');
-
-    // function saveSelectedProduct() {
-    //     localStorage.setItem('title', chosenProduct.title);
-    //     localStorage.setItem('count', count);
-    //     localStorage.setItem('sum', sum);
-    // }
-
-    // saveSelectedProduct();
 
     const handleChange = e => {
         setInscription(e.target.value);
@@ -87,9 +69,9 @@ const CartProduct = ({ chosenProduct, updateCart, clearCart }) => {
                     // value="value"
                     />
                 </label>
-                <div>
+                {/* <div>
                     <Button type="submit">Zapisz</Button>
-                </div>
+                </div> */}
             </form>
         </div >
 

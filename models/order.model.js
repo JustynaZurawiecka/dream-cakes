@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
-    title: { type: String, required: true },
-    count: { type: Number, required: true },
-    sum: { type: Number, required: true },
-    inscription: { type: String, required: true },
+    title: { type: String },
+    count: { type: Number },
+    sum: { type: Number },
+    inscription: { type: String },
     client: { type: String, required: true },
     email: { type: String, required: true }
 

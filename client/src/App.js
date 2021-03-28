@@ -9,6 +9,7 @@ import NotFound from './components/pages/NotFound/NotFoundPage';
 import ProductPage from './components/pages/ProductPage/ProductPageContainer';
 import Cart from './components/pages/CartPage/CartPageContainer.js';
 import Order from './components/pages/Order/OrderPage.js';
+import EmptyCart from './components/pages/EmptyCart/EmptyCart.js';
 
 class App extends React.Component {
 
@@ -21,6 +22,7 @@ class App extends React.Component {
           <Route path="/go-to-cart" exact component={Cart} />
           <Route path="/order-a-product" exact component={Order} />
           <Route component={NotFound} />
+          <Route path="/cart" exact component={EmptyCart} />
         </Switch>
       </MainLayout>
     );
